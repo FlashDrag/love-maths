@@ -28,12 +28,14 @@ function runGame(gameType) {
       displayAdditionQuestion(num1, num2);
       break;
     case 'subtract':
+      if (num1 < num2) {[num1, num2] = [num2, num1]}
       displaySubtractQuestion(num1, num2);
       break;
     case 'multiply':
       displayMultiplyQuestion(num1, num2);
       break;
     case 'divide':
+      if (num1 < num2) {[num1, num2] = [num2, num1]}
       displayDivideQuestion(num1, num2);
       break;
       default:
