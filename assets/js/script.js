@@ -45,6 +45,7 @@ function runGame(gameType) {
       displayMultiplyQuestion(num1, num2);
       break;
     case 'divide':
+      num1 = num1 * num2
       if (num1 < num2) {[num1, num2] = [num2, num1]}
       displayDivideQuestion(num1, num2);
       break;
