@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (let button of buttons) {
     button.addEventListener('click', function () {
-
       if (this.getAttribute('data-type') === 'submit') {
-        console.log('submit');
+        checkAnswer();
       } else {
         let gameType = this.getAttribute('data-type');
         runGame(gameType);
@@ -43,8 +42,21 @@ function runGame(gameType) {
   }
 }
 
+/**
+ * Checks the answer agaist the first  element in
+ * the returned calculateCorrectAnswer
+ */
 function checkAnswer() {
+  let userAnswer = parseInt(document.getElementById('answer-box').value);
+  let calculatedAnswer = calculateCorrectAnswer();
+  let isCorrect = userAnswer === calculatedAnswer[0];
 
+  if (isCorrect) {
+    alert('You got it right!');
+  } else {
+    alert(`${userAnswer} is wrong. The correct answer was ${calculatedAnswer[0]}!`)
+  }
+  runGame(calculatedAnswer[1])
 }
 
 /**
@@ -55,7 +67,7 @@ function calculateCorrectAnswer() {
   let num1 = parseInt(document.getElementById('operand1').innerText);
   let num2 = parseInt(document.getElementById('operand2').innerText);
   let operator = document.getElementById('operator').innerText;
-  
+
   switch(operator) {
     case '+':
       return [num1 + num2, 'addition']
