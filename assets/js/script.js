@@ -46,9 +46,31 @@ function runGame(gameType) {
 function checkAnswer() {
 
 }
-function calculateCorrectAnswer() {
 
+/**
+ * Gets the operands and the operator
+ * directly from the dom, and returns the correct answer.
+ */
+function calculateCorrectAnswer() {
+  let num1 = parseInt(document.getElementById('operand1').innerText);
+  let num2 = parseInt(document.getElementById('operand2').innerText);
+  let operator = document.getElementById('operator').innerText;
+  
+  switch(operator) {
+    case '+':
+      return [num1 + num2, 'addition']
+    case '-':
+      return [num1 - num2, 'subtract']
+    case 'x':
+      return [num1 * num2, 'multiply']
+    case '/':
+      return [num1 / num2, 'divide']
+    default:
+      alert(`Unimplemented operator ${operator}`);
+      throw `Unimplemented operator ${operator}. Aborting!`;
+  }
 }
+
 function incrementScore() {
 
 }
